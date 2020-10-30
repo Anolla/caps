@@ -10,14 +10,16 @@ function newOrder() {
     address: faker.address.streetAddress(),
   };
   events.emit('pickup',order );
-  events.on('delivered', thankYou);
+  events.on('delivered', (order)=>{
+    console.log(`Thank you for delivring ${order.orderId}`);
+  });
 }
 
 setInterval(newOrder,5000);
 
-function thankYou(){
-  console.log('Thank you');
-}
+// function thankYou(order){
+  
+// }
 
   
 
